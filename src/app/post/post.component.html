@@ -1,0 +1,28 @@
+<div class="post" >
+  <div class="showPost">
+    <div class="showPost-header">
+      <h2>{{postTitle}}</h2>
+      <small>{{postAuthor}}</small>
+      </div>
+      {{postText}}
+      </div>
+      <div class="comment">
+        Comments:
+
+
+        <app-comment
+              *ngFor="let comment of comments"
+              [commentAuthor]= "comment.commentAuthor"
+              [commentText]= "comment.commentText"
+
+        >
+        </app-comment>
+        <div class="addComment">
+          <button class="btn" (click)="addComment=!addComment" *ngIf="!addComment">add comment</button>
+          <app-add-comment [author]="userName" *ngIf="addComment" (updateComment)="postUpdateComment($event)">
+          </app-add-comment>
+    </div>
+    </div>
+
+
+</div>

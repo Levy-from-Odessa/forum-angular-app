@@ -1,0 +1,19 @@
+
+<div class="">
+  <div class="enter" *ngIf="!activeUser; else logout">
+    <input type="text" placeholder="name" (input)="changeName($event)">
+    <button (click) = "enterSystem()">
+      enter
+    </button>
+  </div>
+
+  <ng-template #logout >
+    <div class="logout">
+      {{userName}} is in a system
+
+      <button (click)="leaveSystem()">
+        logout
+      </button>
+    </div>
+  </ng-template>
+</div>

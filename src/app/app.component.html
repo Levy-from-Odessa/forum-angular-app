@@ -1,0 +1,42 @@
+<div class="main">
+  <!-- register user -->
+  <app-enter (userChanged)= "userChanged($event)">
+
+  </app-enter>
+
+
+
+  <!-- show all exist posts and comments -->
+  <div *ngIf="userName">
+        <app-post
+            *ngFor="let  post of posts; index as i"
+            [postTitle]= "post.postTitle"
+            [postAuthor]= "post.postAuthor"
+            [postText]= "post.postText"
+            [comments] = "post.comments"
+
+            [userName] = "userName"
+
+            (updateComment)="updateComment($event,i)">
+        </app-post>
+
+
+      <!-- add a new post -->
+        <div class="addPost">
+            <button class="btn"
+                    (click)="toggleAddPost()"
+                    *ngIf="!addPost"
+                    >add post
+            </button>
+
+            <app-add-post [author]="userName"
+                          *ngIf="addPost"
+                          (updatePost)="updatePost($event)"
+                          >
+            </app-add-post>
+        </div>
+  </div>
+
+
+
+</div>
